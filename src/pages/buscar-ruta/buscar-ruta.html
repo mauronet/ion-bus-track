@@ -9,21 +9,10 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page2">
-  <form id="buscarRuta-form1">
-    <ion-searchbar placeholder="" name="" id="buscarRuta-search1"></ion-searchbar>
-  </form>
-  <ion-list id="buscarRuta-list3">
-    <ion-item color="none" id="buscarRuta-list-item7">
-      C11 Cortijo - Lomas
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      {{ item.id }} : {{ item.start }} - {{ item.end }}
     </ion-item>
-    <ion-item color="none" id="buscarRuta-list-item8">
-      C11 Lomas - Cortijo
-    </ion-item>
-    <ion-item color="none" id="buscarRuta-list-item9">
-      C12 Cortijo - Unicentro
-    </ion-item>
-    <ion-item color="none" id="buscarRuta-list-item10">
-      C12 Unicentro - Cortijo
-    </ion-item>
-  </ion-list>
+  </ion-list>  
 </ion-content>

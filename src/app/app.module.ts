@@ -10,6 +10,19 @@ import { BuscarRutaPage } from '../pages/buscar-ruta/buscar-ruta';
 import { MapaRutaPage } from '../pages/mapa-ruta/mapa-ruta';
 import { TabsControllerPage } from '../pages/tabs-controller/tabs-controller';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyCzkGIRENJEMTvauIEPUlcA6IR3zEhq-TM",
+  authDomain: "fir-aad23.firebaseapp.com",
+  databaseURL: "https://fir-aad23.firebaseio.com",
+  projectId: "fir-aad23",
+  storageBucket: "fir-aad23.appspot.com",
+  messagingSenderId: "893753206175"
+};
+
 @NgModule({
   declarations: [
     MyApp,
@@ -20,7 +33,10 @@ import { TabsControllerPage } from '../pages/tabs-controller/tabs-controller';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -33,6 +49,7 @@ import { TabsControllerPage } from '../pages/tabs-controller/tabs-controller';
   providers: [
     StatusBar,
     SplashScreen,
+    AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
